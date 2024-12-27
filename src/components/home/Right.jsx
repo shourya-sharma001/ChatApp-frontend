@@ -5,11 +5,15 @@ const Right = ({ recipient, socket, loggedInUser }) => {
   const [newMessage, setNewMessage] = useState("");
 
 
+console.log(socket);
+
+
+
   useEffect(() => {
     const handleReceiveMessage = (data) => {
       console.log("Received data:", data); // Debug log
       if (data.senderId === recipient._id) {
-        setMessages((prev) => [...prev, { message: data.message, isIncoming: true }]);
+        setMessages((prev) => [...prev, { message: data.message}]);
       }
     };
   
