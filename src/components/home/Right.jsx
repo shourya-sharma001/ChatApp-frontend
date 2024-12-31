@@ -4,29 +4,29 @@ const Right = ({ recipient, socket, loggedInUser }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-
-console.log(socket);
-
-
-
   useEffect(() => {
+
+    socket.on("connect", () => {
+      console.log("Connected to socket server with ID:", socket.id);
+  });
+    
+  console.log(socket);
     const handleReceiveMessage = (data) => {
       console.log("Received data:", data); // Debug log
       if (data.senderId === recipient._id) {
-        setMessages((prev) => [...prev, { message: data.message}]);
+        setMessages((prev) => [...prev, { message: data.message }]);
       }
     };
-  
     socket.on("receive-message", handleReceiveMessage);
+
 
     return () => {
       socket.off("receive-message");
     };
-  },[recipient._id, socket]);
-
-
+  }, [recipient._id, socket]);
 
   const sendMessage = () => {
+
     const messageData = {
       senderId: loggedInUser._id,
       recipientId: recipient._id,
@@ -35,7 +35,7 @@ console.log(socket);
 
     socket.emit("private-message", messageData);
 
-    // setMessages((prev) => [...prev, { ...messageData, isIncoming: false }]);
+    setMessages((prev) => [...prev, { ...messageData, isIncoming: false }]);
     setNewMessage("");
   };
 

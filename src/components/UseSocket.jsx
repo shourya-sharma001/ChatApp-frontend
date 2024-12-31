@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import {io} from "socket.io-client"
 
 
-
 const UseSocket = (userId) => {
   const socket = io("http://localhost:8002")
   console.log(userId);
