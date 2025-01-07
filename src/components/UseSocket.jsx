@@ -1,23 +1,30 @@
-import React, { useEffect } from 'react'
-import {io} from "socket.io-client"
-
+import React, { useEffect, useRef } from "react";
+import { io } from "socket.io-client";
 
 const UseSocket = (userId) => {
-  const socket = io("http://localhost:8002")
-  console.log(userId);
-  
-  useEffect(()=>{
-    if(userId){
-        socket.emit("register-user",userId)
+  const socketRef = useRef();
+
+  useEffect(() => {
+    if (!socketRef.current) {
+      socketRef.current = io("http://localhost:8002");
+
+      console.log("Socket initialized:", socketRef.current.id);
     }
 
-    return()=>{
-        socket.disconnect()
+    if (userId) {
+      socketRef.current.emit("register-user", userId);
     }
 
-  },[userId])
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        console.log("Socket disconnected");
+        socketRef.current = null; 
+      }
+    };
+  }, [userId]);
 
-  return socket
-}
+  return socketRef.current;
+};
 
-export default UseSocket
+export default UseSocket;

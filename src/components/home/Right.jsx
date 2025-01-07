@@ -55,6 +55,7 @@ const Right = ({ recipient, socket, loggedInUser }) => {
       <input
         type="text"
         value={newMessage}
+        autoFocus={true}
         onChange={(e) => setNewMessage(e.target.value)}
       />
       <button onClick={sendMessage}>Send</button>
