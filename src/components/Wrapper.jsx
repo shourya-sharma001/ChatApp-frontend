@@ -4,6 +4,7 @@ import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import App from "../App";
 import Cookies from "js-cookie";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const UserContext = createContext();
 
@@ -11,6 +12,7 @@ const Wrapper = () => {
   const navigate = useNavigate();
   const [user, setuser] = useState({});
   const [users, setUsers] = useState([]);
+  const [onlineUsers,setOnlineUsers] = useState([])
 
   const handleRegister = (e, username, email, password) => {
     e.preventDefault();
@@ -122,6 +124,9 @@ const Wrapper = () => {
         const data = await response.json();
         // console.log(data.users);
         setUsers(data.users);
+        setOnlineUsers(data.onlineUsers)
+        
+        
       } catch (error) {
         console.error("Error fetching all users:", error);
       }
@@ -130,14 +135,17 @@ const Wrapper = () => {
     fetchAllUsers();
   }, [navigate]);
 
+
   return (
-    <UserContext.Provider value={{ handleRegister, handleLogin, user, users }}>
-      <div className="p-6 bg-gray-500 flex justify-around">
-        <h2 className="text-2xl text-center font-bold">
-          Welcome {user.username} to Erfan's ChatApp
+    <UserContext.Provider value={{ handleRegister, handleLogin, user, users, onlineUsers }}>
+      <div className="p-6 bg-gray-500 flex justify-around ">
+        <h2 className="text-xl md:text-2xl text-center font-bold flex flex-col md:flex-row">
+         <span> Welcome {user.username} </span>
+         <span>to Erfan's ChatApp</span>
         </h2>
         <button className="text-2xl font-bold" onClick={(e) => handleLogout(e)}>
-          Logout
+          <span className="hidden md:inline-block">Logout</span>
+          <LogoutIcon/>
         </button>
       </div>
       <Routes>

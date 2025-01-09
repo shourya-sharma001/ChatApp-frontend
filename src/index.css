@@ -73,6 +73,9 @@ button:focus-visible {
   }
 } */
 
+/* body{
+  background-color: rgb(65, 48, 70);
+} */
 
 
 @tailwind base;
