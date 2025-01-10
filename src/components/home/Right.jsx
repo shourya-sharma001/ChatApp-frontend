@@ -1,15 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import SendIcon from '@mui/icons-material/Send';
+import React, { useEffect, useRef, useState, useContext } from "react";
+import SendIcon from "@mui/icons-material/Send";
+import { UserContext } from "../Wrapper";
 
-const Right = ({ recipient, socket, loggedInUser }) => {
+const Right = () => {
+  const { user, socket, selecteduser } = useContext(UserContext);
+
+  let recipient = selecteduser;
+  let loggedInUser = user;
+
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const messageRef = useRef(null)
+  const messageRef = useRef(null);
 
-  useEffect(()=>{
-    messageRef.current?.scrollIntoView({behaviour: "smooth"});
-  },[messages])
+  useEffect(() => {
+    messageRef.current?.scrollIntoView({ behaviour: "smooth" });
+  }, [messages]);
 
   useEffect(() => {
     socket.on("connect", () => {
@@ -17,6 +23,7 @@ const Right = ({ recipient, socket, loggedInUser }) => {
     });
 
     console.log(socket);
+
     const handleReceiveMessage = (data) => {
       if (data.senderId === recipient._id) {
         setMessages((prev) => [
@@ -33,7 +40,7 @@ const Right = ({ recipient, socket, loggedInUser }) => {
   }, [recipient._id, socket]);
 
   const sendMessage = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const messageData = {
       senderId: loggedInUser._id,
       recipientId: recipient._id,
@@ -48,9 +55,14 @@ const Right = ({ recipient, socket, loggedInUser }) => {
 
   return (
     <div className="border-2 border-black rounded-lg  p-2">
-      <h2 className="text-center text-xl font-bold">Chat with {recipient.username}</h2>
+      <h2 className="text-center text-xl font-bold">
+        Chat with {recipient.username}
+      </h2>
 
-      <div className="messages h-[60vh] mb-2 overflow-scroll scrollbar-hide flex flex-col" aria-live="polite">
+      <div
+        className="messages h-[60vh] mb-2 overflow-scroll scrollbar-hide flex flex-col"
+        aria-live="polite"
+      >
         {messages.map((msg, idx) => (
           <div
             key={idx}
@@ -67,17 +79,19 @@ const Right = ({ recipient, socket, loggedInUser }) => {
       </div>
 
       <div>
-      <form action="" onSubmit={(e)=>sendMessage(e)} className="flex">
-      <input
-          type="text" 
-          placeholder="Enter your message here"
-          className="w-full border-2 border-black rounded-lg p-2"
-          value={newMessage}
-          autoFocus={true}
-          onChange={(e) => setNewMessage(e.target.value)}
-        />
-        <button type="submit"><SendIcon color="success"/></button>
-      </form>
+        <form action="" onSubmit={(e) => sendMessage(e)} className="flex">
+          <input
+            type="text"
+            placeholder="Enter your message here"
+            className="w-full border-2 border-black rounded-lg p-2"
+            value={newMessage}
+            autoFocus={true}
+            onChange={(e) => setNewMessage(e.target.value)}
+          />
+          <button type="submit">
+            <SendIcon color="success" />
+          </button>
+        </form>
       </div>
     </div>
   );

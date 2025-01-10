@@ -4,7 +4,8 @@ import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import App from "../App";
 import Cookies from "js-cookie";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
+import UseSocket from "./UseSocket";
 
 export const UserContext = createContext();
 
@@ -12,12 +13,16 @@ const Wrapper = () => {
   const navigate = useNavigate();
   const [user, setuser] = useState({});
   const [users, setUsers] = useState([]);
-  const [onlineUsers,setOnlineUsers] = useState([])
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [selecteduser, setSelectedUser] = useState("");
+  const [toggle, setToggle] = useState(true);
+
+  const socket = UseSocket(user._id);
 
   const handleRegister = (e, username, email, password) => {
     e.preventDefault();
 
-    // console.log(username, email, password);  
+    // console.log(username, email, password);
 
     let userdata = {
       username,
@@ -124,28 +129,43 @@ const Wrapper = () => {
         const data = await response.json();
         // console.log(data.users);
         setUsers(data.users);
-        setOnlineUsers(data.onlineUsers)
-        
-        
+        setOnlineUsers(data.onlineUsers);
       } catch (error) {
         console.error("Error fetching all users:", error);
       }
     };
-  
+
     fetchAllUsers();
   }, [navigate]);
 
+  const handleUserSelect = (user) => {
+    setSelectedUser(user);
+    setToggle(false);
+  };
+  
 
   return (
-    <UserContext.Provider value={{ handleRegister, handleLogin, user, users, onlineUsers }}>
+    <UserContext.Provider
+      value={{
+        handleRegister,
+        handleLogin,
+        user,
+        users,
+        onlineUsers,
+        socket,
+        handleUserSelect,
+        toggle,
+        selecteduser,
+      }}
+    >
       <div className="p-6 bg-gray-500 flex justify-around ">
         <h2 className="text-xl md:text-2xl text-center font-bold flex flex-col md:flex-row">
-         <span> Welcome {user.username} </span>
-         <span>to Erfan's ChatApp</span>
+          <span> Welcome {user.username} </span>
+          <span>to Erfan's ChatApp</span>
         </h2>
         <button className="text-2xl font-bold" onClick={(e) => handleLogout(e)}>
           <span className="hidden md:inline-block">Logout</span>
-          <LogoutIcon/>
+          <LogoutIcon />
         </button>
       </div>
       <Routes>
