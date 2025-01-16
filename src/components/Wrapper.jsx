@@ -156,12 +156,13 @@ const Wrapper = () => {
         handleUserSelect,
         toggle,
         selecteduser,
+        setToggle
       }}
     >
       <div className="p-6 bg-gray-500 flex justify-around ">
-        <h2 className="text-xl md:text-2xl text-center font-bold flex flex-col md:flex-row">
-          <span> Welcome {user.username} </span>
-          <span>to Erfan's ChatApp</span>
+        <h2 className="text-xl md:text-2xl text-center font-bold flex flex-col md:flex-row gap-1">
+          <span> Welcome {user.username}  </span>
+          <span> to Erfan's ChatApp</span>
         </h2>
         <button className="text-2xl font-bold" onClick={(e) => handleLogout(e)}>
           <span className="hidden md:inline-block">Logout</span>

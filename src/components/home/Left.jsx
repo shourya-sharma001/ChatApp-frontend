@@ -5,7 +5,7 @@ import Right from "./Right";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Left = () => {
-  const { user, users, onlineUsers, socket,handleUserSelect,toggle,selecteduser } = useContext(UserContext);
+  const { user, users, onlineUsers, socket,handleUserSelect,toggle,selecteduser,setToggle } = useContext(UserContext);
 
   console.log(onlineUsers);
   const OnlineUsersId = Object.keys(onlineUsers);
