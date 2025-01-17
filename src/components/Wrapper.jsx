@@ -22,7 +22,7 @@ const Wrapper = () => {
   const handleRegister = (e, username, email, password) => {
     e.preventDefault();
 
-    // console.log(username, email, password);
+    console.log(username, email, password);
 
     let userdata = {
       username,
@@ -94,7 +94,7 @@ const Wrapper = () => {
         }
 
         const data = await response.json();
-        // console.log(data.result);
+        console.log(data.result);
         setuser(data.result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -127,7 +127,7 @@ const Wrapper = () => {
       try {
         const response = await fetch("http://localhost:8001/allusers");
         const data = await response.json();
-        // console.log(data.users);
+        console.log(data.users);
         setUsers(data.users);
         setOnlineUsers(data.onlineUsers);
       } catch (error) {
