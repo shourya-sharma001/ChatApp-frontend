@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
@@ -16,8 +16,13 @@ const Wrapper = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [selecteduser, setSelectedUser] = useState("");
   const [toggle, setToggle] = useState(true);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
 
-  const socket = UseSocket(user._id);
+  const {socket} = UseSocket(user._id);
+  
+  console.log(socket?.id);
+  
 
   const handleRegister = (e, username, email, password) => {
     e.preventDefault();
@@ -141,6 +146,7 @@ const Wrapper = () => {
   const handleUserSelect = (user) => {
     setSelectedUser(user);
     setToggle(false);
+    setMessages([])
   };
   
 
@@ -156,7 +162,11 @@ const Wrapper = () => {
         handleUserSelect,
         toggle,
         selecteduser,
-        setToggle
+        setToggle,
+        messages, 
+        setMessages,
+        newMessage,
+         setNewMessage
       }}
     >
       <div className="p-6 bg-gray-500 flex justify-around ">

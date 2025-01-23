@@ -1,15 +1,20 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useContext } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { UserContext } from "../Wrapper";
 
 const Right = () => {
-  const { user, socket, selecteduser } = useContext(UserContext);
+  const {
+    user,
+    socket,
+    selecteduser,
+    messages,
+    setMessages,
+    newMessage,
+    setNewMessage,
+  } = useContext(UserContext);
 
   let recipient = selecteduser;
   let loggedInUser = user;
-
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
 
   const messageRef = useRef(null);
 
@@ -21,8 +26,6 @@ const Right = () => {
     socket.on("connect", () => {
       console.log("Connected to socket server with ID:", socket.id);
     });
-
-    console.log(socket);
 
     const handleReceiveMessage = (data) => {
       if (data.senderId === recipient._id) {
@@ -37,7 +40,7 @@ const Right = () => {
     return () => {
       socket.off("receive-message");
     };
-  }, [recipient._id, socket]);
+  }, [recipient._id, socket,setMessages]);
 
   const sendMessage = (e) => {
     e.preventDefault();

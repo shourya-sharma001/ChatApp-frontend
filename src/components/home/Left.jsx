@@ -1,14 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../Wrapper";
-import UseSocket from "../UseSocket";
 import Right from "./Right";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Left = () => {
-  const { user, users, onlineUsers, socket,handleUserSelect,toggle,selecteduser,setToggle } = useContext(UserContext);
+  const {
+    user,
+    users,
+    onlineUsers,
+    handleUserSelect,
+    toggle,
+    selecteduser,
+    setToggle,
+  } = useContext(UserContext);
 
-  console.log(onlineUsers);
+  // console.log(onlineUsers);
   const OnlineUsersId = Object.keys(onlineUsers);
+
 
   return (
     <div className="flex">
@@ -21,7 +29,7 @@ const Left = () => {
               .map((person, index) => (
                 <li
                   key={index}
-                  onClick={() => handleUserSelect(person)}
+                  onClick={() => handleUserSelect (person)}
                   className={`text-xl font-semibold m-3 border-2 p-2 border-black rounded-lg text-center hover:bg-gray-300 hover:cursor-pointer
               ${
                 OnlineUsersId.includes(person._id)
@@ -41,11 +49,7 @@ const Left = () => {
       )}
 
       <div className="w-full p-4">
-        {selecteduser ? (
-          <Right />
-        ) : (
-          <p>Select a user to chat with</p>
-        )}
+        {selecteduser ? <Right /> : <p>Select a user to chat with</p>}
       </div>
     </div>
   );
