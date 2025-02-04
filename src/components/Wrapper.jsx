@@ -146,7 +146,7 @@ const Wrapper = () => {
   const handleUserSelect = (user) => {
     setSelectedUser(user);
     setToggle(false);
-    setMessages([])
+    // setMessages([])
   };
   
 
@@ -169,21 +169,26 @@ const Wrapper = () => {
          setNewMessage
       }}
     >
-      <div className="p-6 bg-gray-500 flex justify-around ">
-        <h2 className="text-xl md:text-2xl text-center font-bold flex flex-col md:flex-row gap-1">
-          <span> Welcome {user.username}  </span>
-          <span> to Erfan's ChatApp</span>
-        </h2>
-        <button className="text-2xl font-bold" onClick={(e) => handleLogout(e)}>
+      <header className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex flex-wrap justify-between items-center">
+        <h1 className="text-xl md:text-2xl font-bold text-center">
+          Welcome, <span>{user.username}</span> to <span>Erfan's ChatApp</span>
+        </h1>
+        <button className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-md hover:bg-red-600 transition"
+         onClick={(e) => handleLogout(e)}>
           <span className="hidden md:inline-block">Logout</span>
           <LogoutIcon />
         </button>
-      </div>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<App />} />
-      </Routes>
+      </header>
+
+      <main className="">
+        <div className=" mx-auto py-6 px-4">
+          <Routes>
+            <Route path="/" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<App />} />
+          </Routes>
+        </div>
+      </main>
     </UserContext.Provider>
   );
 };

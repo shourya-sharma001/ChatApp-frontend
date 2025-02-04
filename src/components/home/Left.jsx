@@ -14,14 +14,14 @@ const Left = () => {
     setToggle,
   } = useContext(UserContext);
 
-  // console.log(onlineUsers);
   const OnlineUsersId = Object.keys(onlineUsers);
 
 
   return (
-    <div className="flex">
+    <div className="flex h-[75vh] relative ">
       {toggle ? (
-        <div className=" p-4 bg-gray-200">
+        <div className={`p-4 bg-gray-200  overflow-y-scroll absolute top-[-50px] left-[-15px] z-50 shadow-lg transition-transform transform ${
+          toggle ? "translate-x-0" : "-translate-x-full"}`}>
           <h2 className="text-xl font-bold">Users</h2>
           <ul>
             {users
@@ -30,7 +30,7 @@ const Left = () => {
                 <li
                   key={index}
                   onClick={() => handleUserSelect (person)}
-                  className={`text-xl font-semibold m-3 border-2 p-2 border-black rounded-lg text-center hover:bg-gray-300 hover:cursor-pointer
+                  className={`text-xl font-semibold m-3 border-2 p-2 border-black rounded-lg hover:bg-gray-300 hover:cursor-pointer
               ${
                 OnlineUsersId.includes(person._id)
                   ? "bg-green-300 border-green-500"
@@ -43,7 +43,7 @@ const Left = () => {
           </ul>
         </div>
       ) : (
-        <div onClick={() => setToggle(true)}>
+        <div onClick={() => setToggle(true)} className="absolute top-[-60px] z-50 cursor-pointer">
           <MenuIcon />
         </div>
       )}
