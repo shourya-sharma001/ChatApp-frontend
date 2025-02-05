@@ -40,9 +40,12 @@ const Right = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
+
+      if (!recipient._id) return;
+
       try {
         const response = await fetch(
-          `http://localhost:8001/messages/${recipient._id}`
+           `http://localhost:8001/messages/${loggedInUser._id}/${recipient._id}`
         );
         const data = await response.json();
         const formattedMessages = data.messages.map((msg) => ({
