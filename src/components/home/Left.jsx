@@ -16,6 +16,7 @@ const Left = () => {
 
   const OnlineUsersId = Object.keys(onlineUsers);
 
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
     <div className="flex h-[75vh] relative ">
@@ -30,14 +31,20 @@ const Left = () => {
                 <li
                   key={index}
                   onClick={() => handleUserSelect (person)}
-                  className={`text-xl font-semibold m-3 border-2 p-2 border-black rounded-lg hover:bg-gray-300 hover:cursor-pointer
+                  className={`text-xl flex items-center gap-4 font-semibold m-3 border-2 p-1 border-black rounded-lg hover:bg-gray-300 hover:cursor-pointer
               ${
                 OnlineUsersId.includes(person._id)
                   ? "bg-green-300 border-green-500"
                   : ""
               } `}
                 >
-                  {person.username}
+                  <img src={person.profileImage}
+                  // width="30"
+                  // height="30"
+                  alt="."
+                  className="ml-2 rounded-[50%] h-[40px] w-[40px]" />
+                  {capitalize(person.username)}
+
                 </li>
               ))}
           </ul>

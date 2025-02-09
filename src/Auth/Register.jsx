@@ -8,11 +8,27 @@ const Register = () => {
     const [username, setUsername] = useState("")
     const [email,setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [selectedFile, setSelectedFile] = useState(null);
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-gray-400 rounded shadow-md">
     <h2 className="text-2xl font-bold mb-4">Register</h2>
-    <form onSubmit={(e)=>handleRegister(e,username,email,password)}>
+    <form onSubmit={(e)=>handleRegister(e,username,email,password,selectedFile)}>
+
+    <div className="mb-4">
+        <label htmlFor="profileImage" className="block text-sm font-medium text-gray-700">
+          Profile Image
+        </label>
+        <input
+          type="file"
+          id="profileImage"
+          name="username"
+          onChange={(e)=>setSelectedFile(e.target.files[0])}
+          className={`mt-1 block w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 `}
+        />
+      </div>
+
+
       <div className="mb-4">
         <label htmlFor="username" className="block text-sm font-medium text-gray-700">
           Username

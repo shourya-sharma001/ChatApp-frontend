@@ -19,33 +19,54 @@ const Wrapper = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const {socket} = UseSocket(user._id);
-  
-  console.log(socket?.id);
-  
+  const { socket } = UseSocket(user._id);
 
-  const handleRegister = (e, username, email, password) => {
+  console.log(socket?.id);
+
+  const handleRegister = async (e, username, email, password, selectedFile) => {
     e.preventDefault();
 
-    console.log(username, email, password);
+    try {
+      let imageUrl = "";
 
-    let userdata = {
-      username,
-      email,
-      password,
-    };
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        formData.append("upload_preset", "chatApp");
 
-    fetch("http://localhost:8001/register", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userdata),
-    }).then(async (response) => {
-      let result = await response.json();
-      alert(result.result);
-      navigate("/login");
-    });
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/erfanaalam/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        const CloudinaryData = await res.json();
+        imageUrl = CloudinaryData.secure_url;
+      }
+
+      let userdata = {
+        username,
+        email,
+        password,
+        profileImage: imageUrl,
+      };
+
+      fetch("http://localhost:8001/register", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userdata),
+      }).then(async (response) => {
+        let result = await response.json();
+        alert(result.result);
+        navigate("/login");
+      });
+    } catch (error) {
+      console.error("Error registering user:", error);
+      alert("Registration failed!");
+    }
   };
 
   const handleLogin = (e, email, password) => {
@@ -148,7 +169,7 @@ const Wrapper = () => {
     setToggle(false);
     // setMessages([])
   };
-  
+
 
   return (
     <UserContext.Provider
@@ -163,21 +184,33 @@ const Wrapper = () => {
         toggle,
         selecteduser,
         setToggle,
-        messages, 
+        messages,
         setMessages,
         newMessage,
-         setNewMessage
+        setNewMessage,
       }}
     >
       <header className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex flex-wrap justify-between items-center">
-        <h1 className="text-xl md:text-2xl font-bold text-center">
-          Welcome, <span>{user.username}</span> to <span>Erfan's ChatApp</span>
-        </h1>
-        <button className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-md hover:bg-red-600 transition"
-         onClick={(e) => handleLogout(e)}>
-          <span className="hidden md:inline-block">Logout</span>
-          <LogoutIcon />
-        </button>
+        <div className="flex items-center gap-4">
+          <img
+            alt="."
+            src={user.profileImage}
+            width="40"
+            height="40"
+            className="rounded-[50%]"
+          />
+          <h1 className="text-xl md:text-2xl font-bold text-center">
+            Welcome, <span>{user.username}</span> to{" "}
+            <span>Erfan's ChatApp</span>
+          </h1>
+        </div>
+          <button
+            className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-md hover:bg-red-600 transition"
+            onClick={(e) => handleLogout(e)}
+          >
+            <span className="hidden md:inline-block">Logout</span>
+            <LogoutIcon />
+          </button>
       </header>
 
       <main className="">
