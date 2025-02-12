@@ -170,7 +170,6 @@ const Wrapper = () => {
     // setMessages([])
   };
 
-
   return (
     <UserContext.Provider
       value={{
@@ -190,27 +189,25 @@ const Wrapper = () => {
         setNewMessage,
       }}
     >
-      <header className="p-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex flex-wrap justify-between items-center">
+      <header className="p-4 bg-[#3A7D44] text-white flex flex-wrap justify-between items-center">
         <div className="flex items-center gap-4">
-          <img
-            alt="."
-            src={user.profileImage}
-            width="40"
-            height="40"
-            className="rounded-[50%]"
-          />
-          <h1 className="text-xl md:text-2xl font-bold text-center">
-            Welcome, <span>{user.username}</span> to{" "}
-            <span>Erfan's ChatApp</span>
+
+          <div
+            className="profileImage w-12 h-12 rounded-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${user.profileImage})` }}
+          ></div>
+          <h1 className="text-lg md:text-2xl font-bold text-center">
+            Welcome, <span>{user.username}</span>
+            {/* <span>Erfan's ChatApp</span> */}
           </h1>
         </div>
-          <button
-            className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-md hover:bg-red-600 transition"
-            onClick={(e) => handleLogout(e)}
-          >
-            <span className="hidden md:inline-block">Logout</span>
-            <LogoutIcon />
-          </button>
+        <button
+          className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-3xl hover:bg-red-600 transition"
+          onClick={(e) => handleLogout(e)}
+        >
+          <span className="hidden md:inline-block">Logout</span>
+          <LogoutIcon />
+        </button>
       </header>
 
       <main className="">

@@ -73,9 +73,10 @@ button:focus-visible {
   }
 } */
 
-/* body{
-  background-color: rgb(65, 48, 70);
-} */
+body{
+  /* background-color: rgb(65, 10, 82); */
+  background-color: #9DC08B;
+}
 
 
 @tailwind base;

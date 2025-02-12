@@ -130,18 +130,18 @@ const Right = () => {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-lg p-4 bg-white shadow-md max-w-screen-md mx-auto my-4">
+    <div className="border-2 border-gray-300 rounded-lg p-2 bg-[#F8F5E9] shadow-md max-w-screen-md mx-auto my-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-gray-800">
           Chat with {recipient.username}
         </h2>
 
-        <button className="px-4 py-2 bg-red-500 text-white font-bold rounded-md hover:bg-red-600 transition" 
+        <button className="px-2 py-1 bg-red-500 text-white font-bold rounded-3xl hover:bg-red-600 transition" 
         onClick={clearMessages}>Clear msg</button>
       </div>
 
       <div
-        className="messages h-[45vh] mb-4 overflow-scroll scrollbar-hide scroll-smooth flex flex-col bg-gray-100 rounded-md p-2"
+        className="messages h-[45vh] mb-4 overflow-scroll scrollbar-hide scroll-smooth flex flex-col bg-[#F8F5E9] rounded-md p-2"
         aria-live="polite"
       >
         {messages.map((msg, idx) => (
@@ -151,7 +151,7 @@ const Right = () => {
               msg.isIncoming
                 ? "self-start bg-green-500 text-white"
                 : "self-end bg-blue-500 text-white"
-            } p-4 rounded-lg w-fit max-w-[80%] mb-1 shadow-sm`}
+            } h-7 px-4 pb-6 rounded-lg w-fit mb-1 shadow-sm my-2`}
           >
             {msg.message}
           </div>
@@ -170,12 +170,12 @@ const Right = () => {
           <input
             type="text"
             placeholder="Enter your message here"
-            className="flex-grow border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-grow border-2 border-gray-300 rounded-3xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={newMessage}
             autoFocus={true}
             onChange={(e) => setNewMessage(e.target.value)}
           />
-          <button type="submit" className="flex items-center justify-center bg-blue-500 text-white font-bold rounded-md px-2 py-2 hover:bg-blue-600 transition">
+          <button type="submit" className="flex items-center justify-center bg-blue-500 text-white font-bold rounded-full px-2 py-2 hover:bg-blue-600 transition">
             <SendIcon  />
           </button>
         </form>

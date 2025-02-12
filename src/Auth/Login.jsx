@@ -9,7 +9,7 @@ const Register = () => {
     const [password, setPassword] = useState("")
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-gray-400 rounded shadow-md">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-[#B8D576] rounded shadow-md">
     <h2 className="text-2xl font-bold mb-4">Login</h2>
     <form onSubmit={(e)=>handleLogin(e,email,password)}>
     
