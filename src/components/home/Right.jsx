@@ -24,7 +24,7 @@ const Right = () => {
 
   useEffect(() => {
     const handleReceiveMessage = (data) => {
-      if (data.senderId === recipient._id) {
+      if (data.senderId === recipient._id || data.recipientId === loggedInUser._id) {
         setMessages((prev) => [
           ...prev,
           { message: data.message, isIncoming: true },
