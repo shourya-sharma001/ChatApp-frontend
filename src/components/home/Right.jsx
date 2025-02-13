@@ -45,7 +45,7 @@ const Right = () => {
 
       try {
         const response = await fetch(
-           `http://localhost:8001/messages/${loggedInUser._id}/${recipient._id}`
+           `https://chatapp-backend-g1ef.onrender.com/messages/${loggedInUser._id}/${recipient._id}`
         );
         const data = await response.json();
         const formattedMessages = data.messages.map((msg) => ({
@@ -84,7 +84,7 @@ const Right = () => {
     socket.emit("private-message", messageData);
 
     try {
-      const response = await fetch("http://localhost:8001/messages", {
+      const response = await fetch("https://chatapp-backend-g1ef.onrender.com/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const Right = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8001/messages/${loggedInUser._id}`,
+        `https://chatapp-backend-g1ef.onrender.com/messages/${loggedInUser._id}`,
         {
           method: "DELETE",
         }

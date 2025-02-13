@@ -52,7 +52,7 @@ const Wrapper = () => {
         profileImage: imageUrl,
       };
 
-      fetch("http://localhost:8001/register", {
+      fetch("https://chatapp-backend-g1ef.onrender.com/register", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -77,7 +77,7 @@ const Wrapper = () => {
       password,
     };
 
-    fetch("http://localhost:8001/login", {
+    fetch("https://chatapp-backend-g1ef.onrender.com/login", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -98,7 +98,7 @@ const Wrapper = () => {
       try {
         const token = Cookies.get("token");
 
-        const response = await fetch("http://localhost:8001/getUser", {
+        const response = await fetch("https://chatapp-backend-g1ef.onrender.com/getUser", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -133,7 +133,7 @@ const Wrapper = () => {
     e.preventDefault();
 
     try {
-      fetch("http://localhost:8001/logout", {
+      fetch("https://chatapp-backend-g1ef.onrender.com/logout", {
         method: "POST",
         credentials: "include",
       }).then((response) => {
@@ -151,7 +151,7 @@ const Wrapper = () => {
   useEffect(() => {
     const fetchAllUsers = async () => {
       try {
-        const response = await fetch("http://localhost:8001/allusers");
+        const response = await fetch("https://chatapp-backend-g1ef.onrender.com/allusers");
         const data = await response.json();
         console.log(data.users);
         setUsers(data.users);
