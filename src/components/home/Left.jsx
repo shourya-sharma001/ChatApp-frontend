@@ -31,7 +31,7 @@ const Left = () => {
                 <li
                   key={index}
                   onClick={() => handleUserSelect (person)}
-                  className={`text-xl flex items-center gap-4 font-semibold m-3 border-2 p-1 border-[#A9B5DF] rounded-3xl hover:bg-gray-300 hover:cursor-pointer
+                  className={`text-xl flex items-center gap-4 font-semibold m-3 border-2 p-1 border-black rounded-3xl hover:bg-gray-300 hover:cursor-pointer
               ${
                 OnlineUsersId.includes(person._id)
                   ? "bg-green-300 border-green-500"
