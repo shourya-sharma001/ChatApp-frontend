@@ -36,7 +36,7 @@ const Right = () => {
     return () => {
       socket.off("receive-message");
     };
-  }, [recipient._id, socket, setMessages,sendMessage]);
+  }, [recipient._id, socket, setMessages]);
 
   useEffect(() => {
     const fetchMessages = async () => {
