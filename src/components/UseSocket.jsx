@@ -9,7 +9,6 @@ const UseSocket = (userId) => {
       socketRef.current = io("http://localhost:8002");
 
       socketRef.current.emit("initialize-socket", userId);
-      console.log("Socket initialized:", socketRef.current.id);
     }
 
     return () => {

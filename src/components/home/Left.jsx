@@ -21,7 +21,7 @@ const Left = () => {
   return (
     <div className="flex max-h-[75vh] relative ">
       {toggle ? (
-        <div className={`p-4 bg-gray-200 overflow-scroll scrollbar-hide scroll-smooth rounded-md absolute top-[-50px] left-[-15px] z-50 shadow-lg transition-transform transform ${
+        <div className={`p-4 bg-[#9DC08B] overflow-scroll scrollbar-hide scroll-smooth rounded-md absolute top-0 left-[-15px] z-50 transform transition-transform duration-300 ease-in-out ${
           toggle ? "translate-x-0" : "-translate-x-full"}`}>
           <h2 className="text-xl font-bold">Users</h2>
           <ul>
@@ -49,12 +49,12 @@ const Left = () => {
           </ul>
         </div>
       ) : (
-        <div onClick={() => setToggle(true)} className="absolute top-[-60px] z-50 cursor-pointer">
+        <div onClick={() => setToggle(true)} className="absolute top-[-20px] z-50 cursor-pointer">
           <MenuIcon />
         </div>
       )}
 
-      <div className="w-full p-4">
+      <div className="w-full p-2">
         {selecteduser ? <Right /> : <p>Select a user to chat with</p>}
       </div>
     </div>

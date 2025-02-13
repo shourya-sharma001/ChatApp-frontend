@@ -19,7 +19,18 @@ const Right = () => {
   const messageRef = useRef(null);
 
   useEffect(() => {
-    messageRef.current?.scrollIntoView({ behaviour: "smooth" });
+    const messagesContainer = document.querySelector(".messages");
+    if (!messagesContainer) return;
+
+
+    // Check if the user is at the bottom before auto-scrolling
+    const isAtBottom =
+      messagesContainer.scrollHeight - messagesContainer.scrollTop <=
+      messagesContainer.clientHeight + 50;
+  
+    if (isAtBottom) {
+      messageRef.current?.scrollIntoView({ behaviour: "smooth" });
+    }
   }, [messages]);
 
   useEffect(() => {
@@ -130,7 +141,7 @@ const Right = () => {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-lg p-2 bg-[#F8F5E9] shadow-md max-w-screen-md mx-auto my-4">
+    <div className="border-gray-300 rounded-lg p-2 bg-[#F8F5E9] shadow-md ">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-gray-800">
           Chat with {recipient.username}
@@ -141,7 +152,7 @@ const Right = () => {
       </div>
 
       <div
-        className="messages h-[45vh] mb-4 overflow-scroll scrollbar-hide scroll-smooth flex flex-col bg-[#F8F5E9] rounded-md p-2"
+        className="messages h-[60vh] mb-4 overflow-scroll scrollbar-hide scroll-smooth flex flex-col bg-[#F8F5E9] rounded-md p-2"
         aria-live="polite"
       >
         {messages.map((msg, idx) => (

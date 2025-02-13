@@ -21,8 +21,6 @@ const Wrapper = () => {
 
   const { socket } = UseSocket(user._id);
 
-  console.log(socket?.id);
-
   const handleRegister = async (e, username, email, password, selectedFile) => {
     e.preventDefault();
 
@@ -120,7 +118,6 @@ const Wrapper = () => {
         }
 
         const data = await response.json();
-        console.log(data.result);
         setuser(data.result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -133,7 +130,7 @@ const Wrapper = () => {
     e.preventDefault();
 
     try {
-      fetch("https://chatapp-backend-g1ef.onrender.com/logout", {
+      fetch("http://localhost:8001/logout", {
         method: "POST",
         credentials: "include",
       }).then((response) => {
@@ -153,7 +150,6 @@ const Wrapper = () => {
       try {
         const response = await fetch("https://chatapp-backend-g1ef.onrender.com/allusers");
         const data = await response.json();
-        console.log(data.users);
         setUsers(data.users);
         setOnlineUsers(data.onlineUsers);
       } catch (error) {
