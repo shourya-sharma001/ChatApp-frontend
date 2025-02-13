@@ -136,7 +136,7 @@ const Right = () => {
           Chat with {recipient.username}
         </h2>
 
-        <button className="px-2 py-1 bg-red-500 text-white font-bold rounded-3xl hover:bg-red-600 transition" 
+        <button className="px-2 py-1 text-sm bg-red-500 text-white font-bold rounded-3xl hover:bg-red-600 transition" 
         onClick={clearMessages}>Clear msg</button>
       </div>
 
