@@ -147,7 +147,7 @@ const Right = () => {
       <div className="flex justify-between items-center mb-4 px-2">
         <div className="flex items-center gap-3">
           <div
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cover bg-center border-2 border-green-500"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cover bg-top border-2 border-green-500"
             style={
               recipient.profileImage
                 ? { backgroundImage: `url(${recipient.profileImage})` }
