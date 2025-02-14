@@ -143,7 +143,7 @@ const Right = () => {
     }
   };
   return (
-    <div className="max-w-4xl mx-auto h-[calc(100vh-270px)] flex flex-col bg-[#F8F5E9] shadow-lg rounded-xl p-4 sm:p-6">
+    <div className="max-w-4xl mx-auto h-[calc(100vh-240px)] flex flex-col bg-[#F8F5E9] shadow-lg rounded-xl p-4 sm:p-6">
       <div className="flex justify-between items-center mb-4 px-2">
         <div className="flex items-center gap-3">
           <div
