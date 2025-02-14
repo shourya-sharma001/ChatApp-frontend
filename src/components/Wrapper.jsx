@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
@@ -6,8 +6,8 @@ import App from "../App";
 import Cookies from "js-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
 import UseSocket from "./UseSocket";
+import { UserContext } from "../context/UserContext";
 
-export const UserContext = createContext();
 
 const Wrapper = () => {
   const navigate = useNavigate();
@@ -201,7 +201,7 @@ const Wrapper = () => {
           onClick={(e) => handleLogout(e)}
         >
           <span className="hidden sm:inline-block">Logout</span>
-          <LogoutIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+          <LogoutIcon className="w-5 h-5 sm:w-6 sm:h-6" onClick={() => navigate("/")} />
         </button>
       </header>
 
