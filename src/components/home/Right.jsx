@@ -158,8 +158,8 @@ const Right = () => {
             <h2 className="text-lg sm:text-xl font-bold text-gray-800">
               {recipient.username.split(' ')[0]}
             </h2>
-            <span className={`text-sm ${OnlineUsersId.includes(recipient._id) ? "text-green-600" : "text-gray-400"}`}>
-              {OnlineUsersId.includes(recipient._id) ? "Online" : "Offline"}
+            <span className={`text-sm ${OnlineUsersId.includes(recipient?._id.toString()) ? "text-green-600" : "text-gray-400"}`}>
+              {OnlineUsersId.includes(recipient?._id.toString()) ? "Online" : "Offline"}
             </span>
           </div>
         </div>

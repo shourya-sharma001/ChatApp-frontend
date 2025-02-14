@@ -65,8 +65,8 @@ const Left = () => {
                     <span className="text-lg font-semibold text-gray-800">
                       {capitalize(person.username)}
                     </span>
-                    <span className="text-sm text-gray-500">
-                      {OnlineUsersId.includes(person._id) ? "Online" : "Offline"}
+                    <span className={`text-sm ${OnlineUsersId.includes(person?._id.toString()) ? "text-green-600" : "text-gray-400"}`}>
+                      {OnlineUsersId.includes(person._id.toString()) ? "Online" : "Offline"}
                     </span>
                   </div>
                 </li>
