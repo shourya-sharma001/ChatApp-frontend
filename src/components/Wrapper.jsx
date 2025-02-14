@@ -185,24 +185,23 @@ const Wrapper = () => {
         setNewMessage,
       }}
     >
-      <header className="p-4 bg-[#3A7D44] text-white flex flex-wrap justify-between items-center">
-        <div className="flex items-center gap-4">
-
+      
+      <header className="p-3 sm:p-4 bg-[#3A7D44] text-white flex flex-wrap justify-between items-center shadow-lg">
+        <div className="flex items-center gap-2 sm:gap-4">
           <div
-            className="profileImage w-12 h-12 rounded-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${user.profileImage})` }}
+            className="profileImage w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cover bg-center border-2 border-white shadow-md transition-transform hover:scale-105"
+            style={user.profileImage ? { backgroundImage: `url(${user.profileImage})` } : { backgroundImage: `url("unknown-person-icon.webp")` }}
           ></div>
-          <h1 className="text-lg md:text-2xl font-bold text-center">
-            Welcome, <span>{user.username}</span>
-            {/* <span>Erfan's ChatApp</span> */}
+          <h1 className="text-base sm:text-lg md:text-2xl font-bold text-center">
+            Welcome, <span className="text-yellow-200">{user.username}</span>
           </h1>
         </div>
         <button
-          className="flex items-center gap-2 text-sm md:text-lg font-semibold bg-red-500 px-3 py-2 rounded-3xl hover:bg-red-600 transition"
+          className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-lg font-semibold bg-red-500 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full hover:bg-red-600 transition-all duration-300 hover:shadow-lg active:scale-95"
           onClick={(e) => handleLogout(e)}
         >
-          <span className="hidden md:inline-block">Logout</span>
-          <LogoutIcon />
+          <span className="hidden sm:inline-block">Logout</span>
+          <LogoutIcon className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </header>
 
