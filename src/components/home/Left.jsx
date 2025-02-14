@@ -76,7 +76,7 @@ const Left = () => {
       ) : (
         <button
           onClick={() => setToggle(true)}
-          className="fixed md:absolute top-18 left-4 z-50 p-2 bg-[#9DC08B] rounded-full shadow-lg  border-black border-2 hover:bg-[#8ab077] transition-colors duration-200"
+          className="fixed md:absolute top-16 left-0 z-50 p-2 bg-[#9DC08B] shadow-lg hover:bg-[#8ab077] transition-colors duration-200"
           aria-label="Open users list"
         >
           <MenuIcon className="text-white" />

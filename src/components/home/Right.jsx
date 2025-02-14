@@ -5,7 +5,6 @@ import { UserContext } from "../Wrapper";
 const Right = () => {
   const {
     user,
-    users,
     socket,
     selecteduser,
     messages,
@@ -144,7 +143,7 @@ const Right = () => {
     }
   };
   return (
-    <div className="max-w-4xl mx-auto h-[calc(100vh-150px)] flex flex-col bg-[#F8F5E9] shadow-lg rounded-xl p-4 sm:p-6">
+    <div className="max-w-4xl mx-auto h-[calc(100vh-200px)] flex flex-col bg-[#F8F5E9] shadow-lg rounded-xl p-4 sm:p-6">
       <div className="flex justify-between items-center mb-4 px-2">
         <div className="flex items-center gap-3">
           <div
@@ -197,10 +196,10 @@ const Right = () => {
                   {msg.message}
                 </p>
                 <span className="text-xs opacity-75 mt-1 block">
-                  {new Date(msg.createdAt).toLocaleTimeString([], {
+                  {msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString([], {
                     hour: "2-digit",
                     minute: "2-digit",
-                  })}
+                  }) : ""}
                 </span>
               </div>
             </div>
