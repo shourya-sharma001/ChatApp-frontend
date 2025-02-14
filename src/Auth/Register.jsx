@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../components/Wrapper";
+import { UserContext } from "../context/UserContext";
 
 const Register = () => {
   const { handleRegister } = useContext(UserContext);

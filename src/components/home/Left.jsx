@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../Wrapper";
+import { UserContext } from "../../context/UserContext";
 import Right from "./Right";
 import MenuIcon from "@mui/icons-material/Menu";
 

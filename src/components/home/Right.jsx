@@ -1,6 +1,6 @@
 import { useEffect, useRef, useContext } from "react";
 import SendIcon from "@mui/icons-material/Send";
-import { UserContext } from "../Wrapper";
+import { UserContext } from "../../context/UserContext";
 
 const Right = () => {
   const {
