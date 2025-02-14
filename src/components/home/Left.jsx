@@ -54,7 +54,7 @@ const Left = () => {
                   aria-label={`Chat with ${person.username}`}
                 >
                   <div
-                    className="profileImage w-12 h-12 rounded-full bg-cover bg-center border-2 border-[#9DC08B] shadow-sm"
+                    className="profileImage w-12 h-12 rounded-full bg-cover bg-top border-2 border-[#9DC08B] shadow-sm"
                     style={person.profileImage 
                       ? { backgroundImage: `url(${person.profileImage})` }
                       : { backgroundImage: `url("/unknown-person-icon.webp")` }
@@ -76,7 +76,7 @@ const Left = () => {
       ) : (
         <button
           onClick={() => setToggle(true)}
-          className="fixed md:absolute top-16 left-0 z-50 p-2 bg-[#9DC08B] shadow-lg hover:bg-[#8ab077] transition-colors duration-200"
+          className="sticky md:absolute top-16 left-0 z-50 p-2 bg-[#9DC08B] shadow-lg hover:bg-[#8ab077] transition-colors duration-200"
           aria-label="Open users list"
         >
           <MenuIcon className="text-white" />
