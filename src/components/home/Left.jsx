@@ -21,7 +21,7 @@ const Left = () => {
   return (
     <div className="flex min-h-[75vh] md:min-h-[75vh] relative ">
       {toggle ? (
-        <div 
+        <div
           className={`p-4 bg-[#9DC08B] overflow-y-auto scrollbar-hide rounded-lg shadow-lg fixed md:absolute top-0 left-0 md:left-[-15px] z-50 h-screen md:h-auto w-[85vw] md:w-auto transform transition-transform duration-300 ease-in-out ${
             toggle ? "translate-x-0" : "-translate-x-full"
           }`}
@@ -29,8 +29,10 @@ const Left = () => {
           aria-label="Users list"
         >
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">Available Users</h2>
-            <button 
+            <h2 className="text-2xl font-bold text-gray-800">
+              Available Users
+            </h2>
+            <button
               onClick={() => setToggle(false)}
               className="md:hidden text-gray-600 hover:text-gray-800"
               aria-label="Close users list"
@@ -46,18 +48,22 @@ const Left = () => {
                   key={person._id}
                   onClick={() => handleUserSelect(person)}
                   className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-200 hover:shadow-md hover:scale-[1.02] cursor-pointer
-                    ${OnlineUsersId.includes(person._id)
-                      ? "bg-green-100 border-2 border-green-500"
-                      : "bg-white border-2 border-gray-200 hover:border-[#9DC08B]"
+                    ${
+                      OnlineUsersId.includes(person._id)
+                        ? "bg-green-100 border-2 border-green-500"
+                        : "bg-white border-2 border-gray-200 hover:border-[#9DC08B]"
                     }`}
                   role="button"
                   aria-label={`Chat with ${person.username}`}
                 >
                   <div
                     className="profileImage w-12 h-12 rounded-full bg-cover bg-top border-2 border-[#9DC08B] shadow-sm"
-                    style={person.profileImage 
-                      ? { backgroundImage: `url(${person.profileImage})` }
-                      : { backgroundImage: `url("/unknown-person-icon.webp")` }
+                    style={
+                      person.profileImage
+                        ? { backgroundImage: `url(${person.profileImage})` }
+                        : {
+                            backgroundImage: `url("/unknown-person-icon.webp")`,
+                          }
                     }
                     aria-hidden="true"
                   />
@@ -65,8 +71,16 @@ const Left = () => {
                     <span className="text-lg font-semibold text-gray-800">
                       {capitalize(person.username)}
                     </span>
-                    <span className={`text-sm ${OnlineUsersId.includes(person?._id.toString()) ? "text-green-600" : "text-gray-400"}`}>
-                      {OnlineUsersId.includes(person._id.toString()) ? "Online" : "Offline"}
+                    <span
+                      className={`text-sm ${
+                        OnlineUsersId.includes(person?._id?.toString())
+                          ? "text-green-600"
+                          : "text-gray-400"
+                      }`}
+                    >
+                      {OnlineUsersId.includes(person?._id?.toString())
+                        ? "Online"
+                        : "Offline"}
                     </span>
                   </div>
                 </li>
@@ -88,12 +102,14 @@ const Left = () => {
           <Right />
         ) : (
           <div className="flex flex-col items-center justify-center h-[60vh] text-center">
-            <img 
-              src="/chat-illustration.avif" 
+            <img
+              src="/chat-illustration.avif"
               alt="Select a user"
               className="w-48 h-48 mb-4 "
             />
-            <p className="text-xl text-gray-600">Select a user to start chatting</p>
+            <p className="text-xl text-gray-600">
+              Select a user to start chatting
+            </p>
           </div>
         )}
       </div>
