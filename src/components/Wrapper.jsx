@@ -145,6 +145,9 @@ const Wrapper = () => {
     }
   };
 
+  console.log(onlineUsers);
+  
+
   useEffect(() => {
     const fetchAllUsers = async () => {
       try {

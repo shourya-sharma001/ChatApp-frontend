@@ -21,6 +21,15 @@ const UseSocket = (userId) => {
         reconnectionDelay: 3000, // Wait 3 seconds between attempts
       });
 
+      socketRef.current.on("connect", () => {
+        console.log("✅ Connected to socket server:", socketRef.current.id);
+        socketRef.current.emit("initialize-socket", userId);
+      });
+
+      socketRef.current.on("connect_error", (err) => {
+        console.error("❌ Socket connection error:", err.message);
+      });
+
       newSocket.emit("initialize-socket", userId);
       socketRef.current = newSocket;
       setSocket(newSocket);
