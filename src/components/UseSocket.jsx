@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 
 const SOCKET_URL =
   import.meta.env.MODE === "production"
-    ? "https://chatapp-backend.onrender.com" // Use Render backend in production
+    ? "https://chatapp-backend-g1ef.onrender.com" // Use Render backend in production
     : "http://localhost:8001"; // Use localhost for development
 
 const UseSocket = (userId) => {
