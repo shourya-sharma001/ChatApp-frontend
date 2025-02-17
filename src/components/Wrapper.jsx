@@ -145,7 +145,7 @@ const Wrapper = () => {
     }
   };
 
-  console.log(onlineUsers);
+  // console.log(onlineUsers);
   
 
   useEffect(() => {
@@ -154,6 +154,10 @@ const Wrapper = () => {
         const response = await fetch("https://chatapp-backend-g1ef.onrender.com/allusers");
         const data = await response.json();
         setUsers(data.users);
+        console.log(data);
+        console.log(data.onlineUsers);
+        
+        
         setOnlineUsers(data.onlineUsers);
       } catch (error) {
         console.error("Error fetching all users:", error);
