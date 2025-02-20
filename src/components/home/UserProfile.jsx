@@ -69,7 +69,7 @@ const UserProfile = ({ user }) => {
              alt="Profile"
              className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-300"
            />
-           <h3 className="text-xl font-semibold">{userProfile.username}</h3>
+           <h3 className="text-xl text-black font-semibold">{userProfile.username}</h3>
            <p className="text-gray-500 text-lg">{userProfile.email}</p>
          </div>
          <div className="mt-6 text-center">
