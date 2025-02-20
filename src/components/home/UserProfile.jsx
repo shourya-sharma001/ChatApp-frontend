@@ -59,28 +59,28 @@ const UserProfile = ({ user }) => {
 
       {/* Pop-up Box */}
       {isOpen && userProfile && (
-        <div
-          ref={popupRef}
-          className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg border border-gray-200 p-4 z-50"
-        >
-          <div className="text-center">
-            <img
-              src={userProfile.profileImage || "/default-avatar.png"}
-              alt="Profile"
-              className="w-16 h-16 rounded-full mx-auto mb-2"
-            />
-            <h3 className="text-lg font-semibold">{userProfile.name}</h3>
-            <p className="text-gray-500">{userProfile.email}</p>
-          </div>
-          <div className="mt-4 text-center">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+         <div
+         ref={popupRef}
+         className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white shadow-lg rounded-lg border border-gray-200 p-6 z-50"
+       >
+         <div className="text-center">
+           <img
+             src={userProfile.profileImage || "/unknown-person-icon.webp"}
+             alt="Profile"
+             className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-300"
+           />
+           <h3 className="text-xl font-semibold">{userProfile.username}</h3>
+           <p className="text-gray-500 text-lg">{userProfile.email}</p>
+         </div>
+         <div className="mt-6 text-center">
+           <button
+             onClick={() => setIsOpen(false)}
+             className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-lg"
+           >
+             Close
+           </button>
+         </div>
+       </div>
       )}
     </div>
   );
