@@ -1,6 +1,7 @@
 import { useEffect, useRef, useContext } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { UserContext } from "../../context/UserContext";
+import UserProfile from "./UserProfile";
 
 const Right = () => {
   const {
@@ -148,14 +149,15 @@ const Right = () => {
     <div className="max-w-4xl mx-auto h-[calc(100vh-240px)] flex flex-col bg-[#F8F5E9] shadow-lg rounded-xl p-4 sm:p-6">
       <div className="flex justify-between items-center mb-4 px-2">
         <div className="flex items-center gap-3">
-          <div
+          {/* <div
             className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cover bg-center border-2 border-green-500"
             style={
               recipient.profileImage
                 ? { backgroundImage: `url(${recipient.profileImage})` }
                 : { backgroundImage: `url("/unknown-person-icon.webp")` }
             }
-          />
+          /> */}
+          <UserProfile user={recipient} />
           <div>
             <h2 className="text-lg sm:text-xl font-bold text-gray-800">
               {recipient.username.split(' ')[0]}

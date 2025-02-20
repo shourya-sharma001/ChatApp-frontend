@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
 import UseSocket from "./UseSocket";
 import { UserContext } from "../context/UserContext";
+import UserProfile from "./home/UserProfile";
 
 
 const Wrapper = () => {
@@ -195,10 +196,11 @@ const Wrapper = () => {
       
       <header className="p-3 sm:p-4 bg-[#3A7D44] text-white flex flex-wrap justify-between items-center shadow-lg">
         <div className="flex items-center gap-2 sm:gap-4">
-          <div
+          {/* <div
             className="profileImage w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cover bg-center border-2 border-white shadow-md transition-transform hover:scale-105"
             style={user.profileImage ? { backgroundImage: `url(${user.profileImage})` } : { backgroundImage: `url("unknown-person-icon.webp")` }}
-          ></div>
+          ></div> */}
+          <UserProfile user={user} />
           <h1 className="text-base sm:text-lg md:text-2xl font-bold text-center">
             Welcome, <span className="text-yellow-200">{user.username}</span>
           </h1>
