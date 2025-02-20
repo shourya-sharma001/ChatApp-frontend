@@ -130,7 +130,7 @@ const Wrapper = () => {
     e.preventDefault();
 
     try {
-      fetch("http://localhost:8001/logout", {
+      fetch("https://chatapp-backend-g1ef.onrender.com/logout", {
         method: "POST",
         credentials: "include",
       }).then((response) => {
@@ -208,7 +208,7 @@ const Wrapper = () => {
           onClick={(e) => handleLogout(e)}
         >
           <span className="hidden sm:inline-block">Logout</span>
-          <LogoutIcon className="w-5 h-5 sm:w-6 sm:h-6" onClick={() => navigate("/")} />
+          <LogoutIcon className="w-5 h-5 sm:w-6 sm:h-6"/>
         </button>
       </header>
 
