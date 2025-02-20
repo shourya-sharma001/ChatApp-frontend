@@ -121,10 +121,10 @@ const Right = () => {
 
   // function to clear the messages
 
-  const clearMessages = async () => {
+  const clearMessages = async (recipientId) => {
     try {
       const response = await fetch(
-        `https://chatapp-backend-g1ef.onrender.com/messages/${loggedInUser._id}`,
+        `https://chatapp-backend-g1ef.onrender.com/messages/${loggedInUser._id}/${recipientId}`,
         {
           method: "DELETE",
         }
@@ -136,7 +136,9 @@ const Right = () => {
         throw new Error("Failed to clear messages");
       }
 
-      setMessages([]);
+      setMessages((prevMessages) =>
+        prevMessages.filter((msg) => msg.recipientId !== recipientId)
+      );
       console.log("Messages cleared successfully");
     } catch (error) {
       console.error("Error clearing messages:", error);
@@ -166,7 +168,7 @@ const Right = () => {
 
         <button
           className="px-3 py-1.5 text-sm bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 transition-colors duration-200 shadow-md hover:shadow-lg active:scale-95"
-          onClick={clearMessages}
+          onClick={() => clearMessages(recipient._id)}
         >
           Clear Chat
         </button>
